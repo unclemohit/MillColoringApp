@@ -1,21 +1,40 @@
-//
-//  ContentView.swift
-//  MillColoringApp
-//
-//  Created by Mohit Singh on 2025-03-19.
-//
+//Calls all other views in one place
 
 import SwiftUI
+import AVKit
 
 struct ContentView: View {
+    @StateObject var talkToPy = TalkToPy() // Your processing logic object
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationSplitView {
+        
+            FilePicker(inputVideoPath: $talkToPy.inputVideoPath)
+                .navigationTitle("Video")
+            
         }
-        .padding()
+        //these are bindings $talkToPy
+        content: {
+            ColorToggle(
+                showBlue:       $talkToPy.showBlue,
+                showPink:       $talkToPy.showPink,
+                showWhite:      $talkToPy.showWhite,
+                progressText:   $talkToPy.progressText,
+                isProcessing:   $talkToPy.isProcessing,
+                inputVideoPath: $talkToPy.inputVideoPath,
+                startProcessing: { talkToPy.startProcessing() }
+            )
+            .navigationTitle("MOLYCOP")
+        }
+        
+        detail: {
+            ColorCode(
+                player: talkToPy.player,
+                processedVideoURL: talkToPy.processedVideoURL
+            )
+            .navigationTitle("Preview")
+        }
+        .frame(minWidth: 800, minHeight: 600)
     }
 }
 

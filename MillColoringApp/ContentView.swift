@@ -5,6 +5,8 @@ import AVKit
 
 struct ContentView: View {
     @StateObject var talkToPy = TalkToPy() // Your processing logic object
+    @State private var qualityResult: String = ""
+
 
     var body: some View {
         NavigationSplitView {
@@ -22,6 +24,8 @@ struct ContentView: View {
                 progressText:   $talkToPy.progressText,
                 isProcessing:   $talkToPy.isProcessing,
                 inputVideoPath: $talkToPy.inputVideoPath,
+                qualityResult:  .constant(talkToPy.qualityParser.shortSummary),
+
                 startProcessing: { talkToPy.startProcessing() }
             )
             .navigationTitle("MOLYCOP")
@@ -35,6 +39,7 @@ struct ContentView: View {
             .navigationTitle("Preview")
         }
         .frame(minWidth: 800, minHeight: 600)
+        .navigationSplitViewStyle(.balanced)
     }
 }
 

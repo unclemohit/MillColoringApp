@@ -15,13 +15,29 @@ class TalkToPy: ObservableObject {
     @Published var isProcessing: Bool = false
     @Published var processedVideoURL: URL? = nil
     @Published var player: AVPlayer? = nil
-
+    
+    @Published var qualityParser = VideoQualityParser()
+    @Published var rawQualityLog: String = ""
+    
+    
+    
     private let scriptPath: String = "/Users/mohitsingh/Desktop/mill-coloring/Mill-Colouring/pycodeforapp.py"
     private let pythonExec: String = "/opt/anaconda3/envs/millcoloring/bin/python3"
     private var outputVideoPath: String = ""
-
+    
+    
+    
     //remmber you call this from 2nd screen that is ColorToggle
     func startProcessing() {
+        self.rawQualityLog = ""
+        self.qualityParser.shortSummary = ""
+        self.progressText = "Progress: 0%"
+        self.isProcessing = false
+            
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        
+        
         guard !inputVideoPath.isEmpty else {
             progressText = "Error: no video selected."
             return
@@ -66,48 +82,72 @@ class TalkToPy: ObservableObject {
         pipe.fileHandleForReading.readabilityHandler = { fileHandle in
             let data = fileHandle.availableData
             if data.isEmpty { return }
+            
             if let line = String(data: data, encoding: .utf8) {
                 let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
                 
                 if trimmed.hasPrefix("Progress:") {
-                    // helper function to format progress and time as integers.
                     let cleaned = self.parseProgressLine(trimmed)
                     DispatchQueue.main.async {
                         self.progressText = cleaned
                     }
                 }
-                else if
-                    trimmed.hasPrefix("Estimated processing time:") ||
-                          trimmed.hasPrefix("Processing Complete:") ||
-                          trimmed.hasPrefix("Error:") {
+                else if trimmed.hasPrefix("Estimated processing time:") ||
+                            trimmed.hasPrefix("Processing Complete:") ||
+                            trimmed.hasPrefix("Error:") {
                     DispatchQueue.main.async {
                         self.progressText = trimmed
                     }
                 }
                 else {
-                    print("Python output: \(trimmed)")
+                    DispatchQueue.main.async {
+                        self.rawQualityLog += trimmed + "\n"
+                    }
                 }
+                
                 outputLog.append(trimmed + "\n")
+                if self.isQualityCheckComplete(trimmed) {
+                    DispatchQueue.main.async {
+                        self.qualityParser.parse(rawLog: self.rawQualityLog)
+                        self.progressText = self.qualityParser.shortSummary
+                    }
+                    dispatchGroup.leave()
+                }
             }
         }
+        
+        
+        
+        
+        
+        
+        
+        
         
         //this is closure
         //on the main thread, it sets isProcessing to false
         //it creates a URL from the output video path
         //inits AVPlayer with 1.0 speed
         task.terminationHandler = { [weak self] _ in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
+            guard let self = self else { return }
+            
+            dispatchGroup.notify(queue: .main) {
                 self.isProcessing = false
+                
+                self.qualityParser.parse(rawLog: self.rawQualityLog)
+                self.progressText = self.qualityParser.shortSummary
+                
                 if outputLog.isEmpty {
                     self.progressText = "Processing complete."
                 }
+                
                 let videoURL = URL(fileURLWithPath: self.outputVideoPath)
                 self.processedVideoURL = videoURL
                 self.player = AVPlayer(url: videoURL)
                 self.player?.playImmediately(atRate: 1.0)
             }
         }
+        
         
         do {
             try task.run()
@@ -169,5 +209,16 @@ class TalkToPy: ObservableObject {
         }
         return finalText
     }
-
+    
+    private func isQualityCheckComplete(_ line: String) -> Bool {
+        return line.contains("Detection skipped.")
+        || line.contains("Good video")
+        || line.contains("Medium quality")
+        
+    }
+    
+    
+    
+    
+    
 }

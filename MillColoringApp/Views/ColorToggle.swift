@@ -13,9 +13,14 @@ struct ColorToggle: View {
     @Binding var isProcessing: Bool
     @Binding var inputVideoPath: String
     
+    @Binding var qualityResult: String  
+
+    
     //This view simply calls startProcessing() when the user taps a button.
     //It doesn't care what exactly that function does; it just knows that it should trigger some processing.
     var startProcessing: () -> Void
+
+    @State private var showDetails: Bool = false  // ← toggle for full log
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -60,6 +65,10 @@ struct ColorToggle: View {
             
             Divider()
             
+            
+          
+
+            
             // Only show the progress text and bar when processing is running.
             if isProcessing {
                 VStack(alignment: .leading, spacing: 8) {
@@ -76,6 +85,27 @@ struct ColorToggle: View {
                     }
                 }
             }
+            
+            if !qualityResult.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Video Quality Check:")
+                        .font(.headline)
+                    ScrollView {
+                        Text(qualityResult)
+                            .font(.system(size: 14, design: .monospaced))
+                            .foregroundColor(.secondary)
+                            .padding(6)
+                    }
+                    .frame(maxHeight: 150)
+                    .background(Color(.systemGray))
+                    .cornerRadius(8)
+                }
+            }
+
+
+
+            
+            
             
             HStack {
                 Spacer()
@@ -125,6 +155,7 @@ struct ColorToggle: View {
         progressText: .constant("Progress: 45%"),
         isProcessing: .constant(true),
         inputVideoPath: .constant("example.mov"),
+        qualityResult: .constant("quality"),
         startProcessing: {}
     )
 }

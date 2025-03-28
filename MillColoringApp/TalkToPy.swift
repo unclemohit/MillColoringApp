@@ -21,9 +21,24 @@ class TalkToPy: ObservableObject {
     
     
     
-    private let scriptPath: String = "/Users/mohitsingh/Desktop/mill-coloring/Mill-Colouring/pycodeforapp.py"
-    private let pythonExec: String = "/opt/anaconda3/envs/millcoloring/bin/python3"
+    //private let scriptPath: String = "/Users/mohitsingh/Desktop/mill-coloring/Mill-Colouring/pycodeforapp.py"
+    //private let pythonExec: String = "/opt/anaconda3/envs/millcoloring/bin/python3"
     private var outputVideoPath: String = ""
+    
+    // now we locate scripts in the .app:
+        private var embeddedScript: String {
+            // looks for "pycodeforapp.py" in "env/scripts"
+            Bundle.main.path(forResource: "pycodeforapp",
+                             ofType: "py",
+                             inDirectory: "env/scripts") ?? ""
+        }
+        
+        private var embeddedPython: String {
+            // Looks for "python3" in "env/bin"
+            Bundle.main.path(forResource: "python3",
+                             ofType: nil,
+                             inDirectory: "env/bin") ?? ""
+        }
     
     
     
@@ -43,6 +58,12 @@ class TalkToPy: ObservableObject {
             return
         }
         
+        // making sure we actually found the script and python inside the app:
+        guard !embeddedScript.isEmpty, !embeddedPython.isEmpty else {
+            progressText = "Error: Could not locate embedded Python or script in the .app bundle."
+            return
+        }
+        
         progressText = "Progress: 0%"
         isProcessing = true
         
@@ -53,7 +74,7 @@ class TalkToPy: ObservableObject {
         
         // Build command-line arguments.
         let arguments = [
-            scriptPath,
+            embeddedScript,
             inputVideoPath,
             outputVideoPath,
             "--enable-blue", showBlue ? "true" : "false",
@@ -65,7 +86,7 @@ class TalkToPy: ObservableObject {
         //Setting the executable to the py interpreter
         //Assigning the above constructed arguments to the process
         let task = Process()
-        task.executableURL = URL(fileURLWithPath: pythonExec)
+        task.executableURL = URL(fileURLWithPath: embeddedPython)
         task.arguments = arguments
         
         //Pipe for capturing output

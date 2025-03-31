@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4C13A5532D9709950007C0AE /* env in Resources */ = {isa = PBXBuildFile; fileRef = 4C13A5522D9709950007C0AE /* env */; };
-		4C13A5552D970F6A0007C0AE /* environment.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4C13A5542D970F520007C0AE /* environment.yml */; };
 		4C13A5592D9710080007C0AE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4C13A5582D970FFE0007C0AE /* .gitignore */; };
+		4C72C6182D9A17260092AB8F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C72C6172D9A17260092AB8F /* AVKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4C13A5522D9709950007C0AE /* env */ = {isa = PBXFileReference; lastKnownFileType = folder; name = env; path = ../env; sourceTree = "<group>"; };
-		4C13A5542D970F520007C0AE /* environment.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = environment.yml; sourceTree = "<group>"; };
 		4C13A5582D970FFE0007C0AE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4C72C6172D9A17260092AB8F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		4CA548E32D8BC0B500E39BA7 /* MillColoringApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MillColoringApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -8595,21 +8595,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C72C6182D9A17260092AB8F /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C72C6162D9A17250092AB8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C72C6172D9A17260092AB8F /* AVKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4CA548DA2D8BC0B500E39BA7 = {
 			isa = PBXGroup;
 			children = (
 				4C13A5582D970FFE0007C0AE /* .gitignore */,
-				4C13A5542D970F520007C0AE /* environment.yml */,
 				4C13A5522D9709950007C0AE /* env */,
 				4CA548E52D8BC0B500E39BA7 /* MillColoringApp */,
 				4CA548E42D8BC0B500E39BA7 /* Products */,
 				4C133DA72D9706D60007C0AE /* env */,
+				4C72C6162D9A17250092AB8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -8687,7 +8696,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C13A5592D9710080007C0AE /* .gitignore in Resources */,
-				4C13A5552D970F6A0007C0AE /* environment.yml in Resources */,
 				4C13A5532D9709950007C0AE /* env in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9006,6 +9014,7 @@
 					"$(PROJECT_DIR)/env/env/lib/python3.9/site-packages/numpy/random/lib",
 					"$(PROJECT_DIR)/env/env/lib/tdbcmysql1.1.7",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MillColoringApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -9197,6 +9206,7 @@
 					"$(PROJECT_DIR)/env/env/lib/python3.9/site-packages/numpy/random/lib",
 					"$(PROJECT_DIR)/env/env/lib/tdbcmysql1.1.7",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MillColoringApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";

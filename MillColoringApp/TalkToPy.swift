@@ -96,7 +96,8 @@ class TalkToPy: ObservableObject {
         task.standardError = pipe
         
         var outputLog = ""
-        
+        var didLeave = false
+
         //it reads the data and converts it to a string.
         //trims any extra whitespace
         //checks if the line starts with "Progress:"
@@ -127,7 +128,9 @@ class TalkToPy: ObservableObject {
                 }
                 
                 outputLog.append(trimmed + "\n")
-                if self.isQualityCheckComplete(trimmed) {
+                if self.isQualityCheckComplete(trimmed) && !didLeave {
+                    didLeave = true  // Ensure leave is only called once.
+
                     DispatchQueue.main.async {
                         self.qualityParser.parse(rawLog: self.rawQualityLog)
                         self.progressText = self.qualityParser.shortSummary
@@ -165,7 +168,6 @@ class TalkToPy: ObservableObject {
                 let videoURL = URL(fileURLWithPath: self.outputVideoPath)
                 self.processedVideoURL = videoURL
                 self.player = AVPlayer(url: videoURL)
-                self.player?.playImmediately(atRate: 1.0)
             }
         }
         

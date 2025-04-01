@@ -22,7 +22,6 @@
 		4C1318AC2D9704120007C0AE /* Exceptions for "MillColoringApp" folder in "MillColoringApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
 				"Preview Content/Preview Assets.xcassets",
 			);
 			target = 4CA548E22D8BC0B500E39BA7 /* MillColoringApp */;

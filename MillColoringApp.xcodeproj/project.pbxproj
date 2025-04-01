@@ -7,18 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C13A5532D9709950007C0AE /* env in Resources */ = {isa = PBXBuildFile; fileRef = 4C13A5522D9709950007C0AE /* env */; };
-		4C13A5592D9710080007C0AE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4C13A5582D970FFE0007C0AE /* .gitignore */; };
 		4C72C6182D9A17260092AB8F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C72C6172D9A17260092AB8F /* AVKit.framework */; };
-
+		4CDD17C02D9B7584004AA1FD /* env in Resources */ = {isa = PBXBuildFile; fileRef = 4CDD17BF2D9B7582004AA1FD /* env */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C13A5522D9709950007C0AE /* env */ = {isa = PBXFileReference; lastKnownFileType = folder; name = env; path = ../env; sourceTree = "<group>"; };
 		4C13A5582D970FFE0007C0AE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4C72C6172D9A17260092AB8F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-
 		4CA548E32D8BC0B500E39BA7 /* MillColoringApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MillColoringApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CDD17BF2D9B7582004AA1FD /* env */ = {isa = PBXFileReference; lastKnownFileType = folder; name = env; path = ../env; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -30,7 +27,7 @@
 			);
 			target = 4CA548E22D8BC0B500E39BA7 /* MillColoringApp */;
 		};
-		4C135EFF2D9707240007C0AE /* Exceptions for "env" folder in "MillColoringApp" target */ = {
+		4CDD17BE2D9B746D004AA1FD /* Exceptions for "env" folder in "MillColoringApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"bin/.gdk-pixbuf-post-link.sh",
@@ -8574,20 +8571,20 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4C133DA72D9706D60007C0AE /* env */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				4C135EFF2D9707240007C0AE /* Exceptions for "env" folder in "MillColoringApp" target */,
-			);
-			path = env;
-			sourceTree = "<group>";
-		};
 		4CA548E52D8BC0B500E39BA7 /* MillColoringApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				4C1318AC2D9704120007C0AE /* Exceptions for "MillColoringApp" folder in "MillColoringApp" target */,
 			);
 			path = MillColoringApp;
+			sourceTree = "<group>";
+		};
+		4CDDF6662D9B729B004AA1FD /* env */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4CDD17BE2D9B746D004AA1FD /* Exceptions for "env" folder in "MillColoringApp" target */,
+			);
+			path = env;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -8598,7 +8595,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C72C6182D9A17260092AB8F /* AVKit.framework in Frameworks */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8609,7 +8605,6 @@
 			isa = PBXGroup;
 			children = (
 				4C72C6172D9A17260092AB8F /* AVKit.framework */,
-
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -8617,13 +8612,12 @@
 		4CA548DA2D8BC0B500E39BA7 = {
 			isa = PBXGroup;
 			children = (
+				4CDD17BF2D9B7582004AA1FD /* env */,
 				4C13A5582D970FFE0007C0AE /* .gitignore */,
-				4C13A5522D9709950007C0AE /* env */,
 				4CA548E52D8BC0B500E39BA7 /* MillColoringApp */,
 				4CA548E42D8BC0B500E39BA7 /* Products */,
-				4C133DA72D9706D60007C0AE /* env */,
 				4C72C6162D9A17250092AB8F /* Frameworks */,
-
+				4CDDF6662D9B729B004AA1FD /* env */,
 			);
 			sourceTree = "<group>";
 		};
@@ -8651,8 +8645,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4C133DA72D9706D60007C0AE /* env */,
 				4CA548E52D8BC0B500E39BA7 /* MillColoringApp */,
+				4CDDF6662D9B729B004AA1FD /* env */,
 			);
 			name = MillColoringApp;
 			packageProductDependencies = (
@@ -8700,8 +8694,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C13A5592D9710080007C0AE /* .gitignore in Resources */,
-				4C13A5532D9709950007C0AE /* env in Resources */,
+				4CDD17C02D9B7584004AA1FD /* env in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

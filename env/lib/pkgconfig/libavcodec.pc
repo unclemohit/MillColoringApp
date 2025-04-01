@@ -1,0 +1,14 @@
+prefix=/opt/anaconda3/envs/env
+exec_prefix=${prefix}
+libdir=/opt/anaconda3/envs/env/lib
+includedir=/opt/anaconda3/envs/env/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 60.31.102
+Requires: 
+Requires.private: libswresample >= 4.12.100, libavutil >= 58.29.100
+Conflicts:
+Libs: -L${libdir}  -lavcodec 
+Libs.private: -L/opt/anaconda3/envs/env/lib -lvpx -lm -L/opt/anaconda3/envs/env/lib -lvpx -lm -L/opt/anaconda3/envs/env/lib -lvpx -lm -L/opt/anaconda3/envs/env/lib -lvpx -lm -liconv -lm -llzma -L/opt/anaconda3/envs/env/lib -ldav1d -L/opt/anaconda3/envs/env/lib -lrsvg-2 -lm -lgio-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 -lintl -lcairo -framework AudioToolbox -L/opt/anaconda3/envs/env//opt/anaconda3/envs/env/lib -laom -lmp3lame -lm -L/opt/anaconda3/envs/env/lib -lopenjp2 -L/opt/anaconda3/envs/env/lib -lopus -ltheoraenc -ltheoradec -logg -L/opt/anaconda3/envs/env/lib -lvorbis -L/opt/anaconda3/envs/env/lib -lvorbisenc -L/opt/anaconda3/envs/env/lib -lopenh264 -pthread -L/opt/anaconda3/envs/env/lib -lz -framework VideoToolbox -framework CoreFoundation -framework CoreMedia -framework CoreVideo -framework CoreServices
+Cflags: -I${includedir}

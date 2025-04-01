@@ -1,0 +1,12 @@
+prefix=/opt/anaconda3/envs/env
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/leptonica
+
+Name: leptonica
+Description: An open source C library for efficient image processing and image analysis operations
+Version: 1.82.0
+Libs: -L${libdir} -llept
+Libs.private: -L/opt/anaconda3/envs/env/lib -lz -L/opt/anaconda3/envs/env/lib -lpng16 -L/opt/anaconda3/envs/env/lib -ljpeg -L/opt/anaconda3/envs/env/lib -lopenjp2 -lgif -L/opt/anaconda3/envs/env/lib -ltiff -L/opt/anaconda3/envs/env/lib -lwebp -L/opt/anaconda3/envs/env/lib -lwebpmux
+Cflags: -I${includedir}
+

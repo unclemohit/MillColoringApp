@@ -1,0 +1,12 @@
+prefix=/opt/anaconda3/envs/env
+exec_prefix=${prefix}
+libdir=/opt/anaconda3/envs/env/lib
+includedir=/opt/anaconda3/envs/env/include
+
+Name: absl_hashtable_debug
+Description: Abseil hashtable_debug library
+URL: https://abseil.io/
+Version: 20250127
+Requires: absl_hashtable_debug_hooks = 20250127
+Libs: -L${libdir}  
+Cflags: -I${includedir} -Wno-float-conversion -Wno-implicit-float-conversion -Wno-implicit-int-float-conversion -Wno-unknown-warning-option -DNOMINMAX

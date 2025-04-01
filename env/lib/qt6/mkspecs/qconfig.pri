@@ -1,0 +1,21 @@
+QT_ARCH = arm64
+QT_BUILDABI = arm64-little_endian-lp64
+QT_LIBCPP_ABI_TAG = 
+QT.global.enabled_features = shared rpath signaling_nan zstd thread future concurrent dbus openssl-linked opensslv30 shared shared rpath reduce_exports openssl
+QT.global.disabled_features = static cross_compile pkg-config debug_and_release separate_debug_info appstore-compliant simulator_and_device force_asserts framework c++20 c++2a c++2b reduce_relocations wasm-simd128 wasm-exceptions opensslv11
+QT.global.disabled_features += release build_all
+QT_CONFIG += shared no-pkg-config rpath reduce_exports openssl release
+CONFIG += release  shared plugin_manifest
+QT_VERSION = 6.7.3
+QT_MAJOR_VERSION = 6
+QT_MINOR_VERSION = 7
+QT_PATCH_VERSION = 3
+
+QT_CLANG_MAJOR_VERSION = 14
+QT_CLANG_MINOR_VERSION = 0
+QT_CLANG_PATCH_VERSION = 6
+QT_MAC_SDK_VERSION = 11.3
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.1
+QT_MAC_SDK_VERSION_MIN = 13
+QT_MAC_SDK_VERSION_MAX = 14
+QT_ARCHS = $$QT_ARCH

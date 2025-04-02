@@ -1,0 +1,14 @@
+prefix=/opt/anaconda3/envs/env
+exec_prefix=${prefix}
+libdir=/opt/anaconda3/envs/env/lib
+includedir=/opt/anaconda3/envs/env/include
+
+Name: libswresample
+Description: FFmpeg audio resampling library
+Version: 4.12.100
+Requires: 
+Requires.private: libavutil >= 58.29.100
+Conflicts:
+Libs: -L${libdir}  -lswresample 
+Libs.private: -lm
+Cflags: -I${includedir}

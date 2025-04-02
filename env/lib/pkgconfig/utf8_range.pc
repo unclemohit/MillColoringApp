@@ -1,0 +1,11 @@
+prefix=/opt/anaconda3/envs/env
+exec_prefix=/opt/anaconda3/envs/env
+libdir=/opt/anaconda3/envs/env/lib
+includedir=/opt/anaconda3/envs/env/include
+
+Name: UTF8 Range
+Description: Google's UTF8 Library
+Version: 1.0
+Requires: absl_strings
+Libs: -L${libdir} -lutf8_validity -lutf8_range 
+Cflags: -I${includedir}

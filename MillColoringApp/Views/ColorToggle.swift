@@ -32,7 +32,7 @@ struct ColorToggle: View {
                     
                     // Row 1: Show Blue
                     HStack {
-                        Text("Show Blue")
+                        Text("Select Blue")
                             .font(.headline)
                         Spacer()
                         Toggle("", isOn: $showBlue)
@@ -41,16 +41,16 @@ struct ColorToggle: View {
                     
                     // Row 2: Show Pink
                     HStack {
-                        Text("Show Pink")
+                        Text("Select Pink")
                             .font(.headline)
                         Spacer()
                         Toggle("", isOn: $showPink)
                             .toggleStyle(SwitchToggleStyle(tint: .green))
                     }
                     
-                    // Row 3: Show White
+                    // Row 3: Show White...no show, should be select eh!
                     HStack {
-                        Text("Show White")
+                        Text("Select White")
                             .font(.headline)
                         Spacer()
                         Toggle("", isOn: $showWhite)
